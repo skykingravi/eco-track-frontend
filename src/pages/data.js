@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import worldMap from "../images/world_map.jpeg";
 import axios from "axios";
 import { useGetBaseUrl } from "../hooks/useGetBaseUrl";
+import { useGetSecret } from "../hooks/useGetSecret";
 
 export const Data = () => {
     const [size, setSize] = useState({
@@ -26,7 +27,7 @@ export const Data = () => {
         };
     });
 
-    const SECRET = process.env.SECRET;
+    const SECRET = useGetSecret();
 
     const DATA_OPTIONS = [
         "Water Pollution Data",
