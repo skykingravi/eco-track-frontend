@@ -26,7 +26,7 @@ export const Data = () => {
         };
     });
 
-    const SECRET = "secret";
+    const SECRET = process.env.SECRET;
 
     const DATA_OPTIONS = [
         "Water Pollution Data",
