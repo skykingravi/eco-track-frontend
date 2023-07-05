@@ -20,7 +20,7 @@ export const Contact = () => {
                 message: ""
             });
         } catch (error) {
-            console.error(error)
+            console.error("Something went wrong! Please reload the page.");
         }
     }
 

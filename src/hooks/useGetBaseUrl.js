@@ -1,3 +1,3 @@
 export const useGetBaseUrl = () => {
-    return "http://localhost:3001";
+    return "https://eco-track-backend.onrender.com";
 }

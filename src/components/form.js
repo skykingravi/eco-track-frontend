@@ -11,6 +11,7 @@ export const FormTemplate = ({ image, name }) => {
     const [geolocationErrorMessage, setGeolocationErrorMessage] = useState("");
     const [emailErrorMessage, setEmailErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [isImageLoading, setIsImageLoading] = useState(true);
     const [CurrentQuestion, setCurrentQuestion] = useState(0);
     const [response, setResponse] = useState({
         email: "",
@@ -289,13 +290,13 @@ export const FormTemplate = ({ image, name }) => {
     };
 
     const getUrl = (name) => {
-        if (name === "Water Pollution Data") {
+        if (name === "Water Pollution") {
             return BASE_URL + "/forms/waterPollutionForm";
-        } else if (name === "Air Pollution Data") {
+        } else if (name === "Air Pollution") {
             return BASE_URL + "/forms/airPollutionForm";
-        } else if (name === "Climate Patterns Data") {
+        } else if (name === "Climate Patterns") {
             return BASE_URL + "/forms/climatePatternsForm";
-        } else if (name === "Deforestation Rate Data") {
+        } else if (name === "Deforestation Rate") {
             return BASE_URL + "/forms/deforestationRateForm";
         }
     };
@@ -314,8 +315,8 @@ export const FormTemplate = ({ image, name }) => {
                     setEmailErrorMessage(res.data.message);
                 }
             } catch (error) {
-                setEmailErrorMessage(error.message);
-                console.error(error);
+                setEmailErrorMessage("Something went wrong!");
+                console.error("Something went wrong! Please reload the page.");
             }
             setIsLoading(false);
         } else if (CurrentQuestion === getFormQuestions(name).length) {
@@ -324,7 +325,7 @@ export const FormTemplate = ({ image, name }) => {
                 const res = await axios.post(getUrl(name), response);
                 alert(res.data.message);
             } catch (error) {
-                console.error(error);
+                console.error("Something went wrong! Please reload the page.");
             }
             clearStates();
         } else {
@@ -369,11 +370,14 @@ export const FormTemplate = ({ image, name }) => {
             </div>
             {showForm && (
                 <div
-                    className="form-wrapper"
-                    style={{
-                        backgroundImage: `url(${IMAGES[image]}`,
-                    }}
+                    className={isImageLoading ? "form-wrapper loading" : "form-wrapper"}
                 >
+                    <img
+                                src={IMAGES[image]}
+                                alt="Not Found"
+                                onLoad={() => setIsImageLoading(false)}
+                                onError={() => setIsImageLoading(true)}
+                            />
                     <div className={isLoading ? "form loading" : "form"}>
                         {CurrentQuestion === 0 ? (
                             <>

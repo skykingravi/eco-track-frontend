@@ -89,7 +89,7 @@ export const Data = () => {
             setDataFetchedTime(getCurrentTime);
             setShowMap(true);
         } catch (error) {
-            console.error(error);
+            console.error("Something went wrong! Please reload the page.");
         }
 
         setIsLoading(false);
