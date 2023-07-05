@@ -34,6 +34,7 @@ body {
     width: 100vw;
     min-height: 100vh;
     background-color: var(--blue);
+    position: relative;
     overflow-x: hidden;
     background-image: url(./images/background.jpg);
     background-repeat: no-repeat;
@@ -59,7 +60,7 @@ body::-webkit-scrollbar {
     left: 0;
     width: 100%;
     background-color: var(--black);
-    height: 1.8rem;
+    height: 1.6rem;
     border-radius: 1rem;
     transform-origin: center center;
     transition: transform 0.3s ease, top 0.3s ease;
@@ -671,7 +672,7 @@ body::-webkit-scrollbar {
     .navbar {
         height: 100vh;
         overflow-y: scroll;
-        top: -100%;
+        top: -200%;
         font-size: 4rem;
         box-shadow: none;
         transition: top 0.3s ease;
