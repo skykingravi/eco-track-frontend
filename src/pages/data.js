@@ -14,6 +14,8 @@ export const Data = () => {
     const [formSelected, setFormSelected] = useState("Water Pollution Data");
     const [data, setData] = useState([]);
 
+    const BASE_URL = process.env.BASE_URL;
+
     useEffect(() => {
         window.addEventListener("resize", myFunc);
         window.addEventListener("load", myFunc);
@@ -60,13 +62,13 @@ export const Data = () => {
 
     const getUrl = (name) => {
         if (name === "Water Pollution Data") {
-            return "http://localhost:3001/forms/waterPollutionForm";
+            return BASE_URL + "/forms/waterPollutionForm";
         } else if (name === "Air Pollution Data") {
-            return "http://localhost:3001/forms/airPollutionForm";
+            return BASE_URL + "/forms/airPollutionForm";
         } else if (name === "Climate Patterns Data") {
-            return "http://localhost:3001/forms/climatePatternsForm";
+            return BASE_URL + "/forms/climatePatternsForm";
         } else if (name === "Deforestation Rate Data") {
-            return "http://localhost:3001/forms/deforestationRateForm";
+            return BASE_URL + "/forms/deforestationRateForm";
         }
     };
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export const Contact = () => {
 
+    const BASE_URL = process.env.BASE_URL;
     const [messageFormat, setMessageFormat] = useState({
         email: "",
         message: ""
@@ -11,7 +12,7 @@ export const Contact = () => {
     const handleSubmit = async(event) => {
         event.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3001/message", messageFormat);
+            const response = await axios.post(BASE_URL + "/message", messageFormat);
             alert(response.data.message);
             setMessageFormat({
                 email: "",

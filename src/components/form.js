@@ -17,6 +17,8 @@ export const FormTemplate = ({ image, name }) => {
         optionsArray: [],
     });
 
+    const BASE_URL = process.env.BASE_URL;
+
     const IMAGES = [
         water_pollution,
         air_pollution,
@@ -286,14 +288,14 @@ export const FormTemplate = ({ image, name }) => {
     };
 
     const getUrl = (name) => {
-        if (name === "Water Pollution") {
-            return "http://localhost:3001/forms/waterPollutionForm";
-        } else if (name === "Air Pollution") {
-            return "http://localhost:3001/forms/airPollutionForm";
-        } else if (name === "Climate Patterns") {
-            return "http://localhost:3001/forms/climatePatternsForm";
-        } else if (name === "Deforestation Rate") {
-            return "http://localhost:3001/forms/deforestationRateForm";
+        if (name === "Water Pollution Data") {
+            return BASE_URL + "/forms/waterPollutionForm";
+        } else if (name === "Air Pollution Data") {
+            return BASE_URL + "/forms/airPollutionForm";
+        } else if (name === "Climate Patterns Data") {
+            return BASE_URL + "/forms/climatePatternsForm";
+        } else if (name === "Deforestation Rate Data") {
+            return BASE_URL + "/forms/deforestationRateForm";
         }
     };
 
