@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { useGetBaseUrl } from "../hooks/useGetBaseUrl";
 
 export const Contact = () => {
 
-    const BASE_URL = process.env.BASE_URL;
+    const BASE_URL = useGetBaseUrl();
     const [messageFormat, setMessageFormat] = useState({
         email: "",
         message: ""

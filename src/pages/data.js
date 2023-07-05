@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import worldMap from "../images/world_map.jpeg";
 import axios from "axios";
+import { useGetBaseUrl } from "../hooks/useGetBaseUrl";
 
 export const Data = () => {
     const [size, setSize] = useState({
@@ -14,7 +15,7 @@ export const Data = () => {
     const [formSelected, setFormSelected] = useState("Water Pollution Data");
     const [data, setData] = useState([]);
 
-    const BASE_URL = process.env.BASE_URL;
+    const BASE_URL = useGetBaseUrl();
 
     useEffect(() => {
         window.addEventListener("resize", myFunc);
@@ -25,7 +26,7 @@ export const Data = () => {
         };
     });
 
-    const SECRET = "showmedata";
+    const SECRET = "secret";
 
     const DATA_OPTIONS = [
         "Water Pollution Data",
@@ -79,7 +80,12 @@ export const Data = () => {
             const response = await axios.get(
                 `${getUrl(formSelected)}/data/${SECRET}`
             );
-            setData(response.data);
+            if (!response.data.message) {
+                setData(response.data);
+            }
+            else {
+                alert(response.data.message);
+            }
             setDataFetchedTime(getCurrentTime);
             setShowMap(true);
         } catch (error) {

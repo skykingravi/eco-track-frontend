@@ -4,6 +4,7 @@ import water_pollution from "../images/water-pollution.jpg";
 import air_pollution from "../images/air-pollution.jpg";
 import climate_patterns from "../images/climate-patterns.jpg";
 import deforestation_rate from "../images/deforestation-rate.jpg";
+import { useGetBaseUrl } from "../hooks/useGetBaseUrl";
 
 export const FormTemplate = ({ image, name }) => {
     const [showForm, setShowForm] = useState(false);
@@ -17,7 +18,7 @@ export const FormTemplate = ({ image, name }) => {
         optionsArray: [],
     });
 
-    const BASE_URL = process.env.BASE_URL;
+    const BASE_URL = useGetBaseUrl();
 
     const IMAGES = [
         water_pollution,
